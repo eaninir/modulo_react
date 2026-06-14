@@ -21,10 +21,7 @@ function HeaderTienda({ logo }) {
           </div>
         </div>
 
-        <div className="buscador-header">
-          <input type="text" placeholder="Buscar productos..." />
-          <button>🔍</button>
-        </div>
+    
       </div>
     </header>
   );
