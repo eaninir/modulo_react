@@ -1,0 +1,83 @@
+[
+  {
+    "id": 1,
+    "titulo": "Arreglo  Limpiapipas",
+    "precio": "$13.990",
+    "detalle": "Rosas de Limpiapipas | Regalo personalizado",
+    "categoria": "Limpiapipas",
+    "accion": "Compra online disponible",
+    "imagen": "producto1.jpg"
+  },
+  {
+    "id": 2,
+    "titulo": "Arreglo  Limpiapipas",
+    "precio": "$15.990",
+    "detalle": "Arreglo decorativo | Hecho a mano",
+    "categoria": "Limpiapipas",
+    "accion": "Compra online disponible",
+    "imagen": "producto2.jpg"
+  },
+  {
+    "id": 3,
+    "titulo": "Corazón con regalo",
+    "precio": "$18.990",
+    "detalle": "Caja personalizada | Detalle romántico",
+    "categoria": "Arreglos",
+    "accion": "Compra online disponible",
+    "imagen": "producto3.jpg"
+  },
+  {
+    "id": 4,
+    "titulo": "Ramo azul personalizado",
+    "precio": "$16.990",
+    "detalle": "Ramo con globo | Regalo especial",
+    "categoria": "Arreglo",
+    "accion": "Compra online disponible",
+    "imagen": "producto4.jpg"
+  },
+  {
+    "id": 5,
+    "titulo": "Arreglo 50 rosas",
+    "precio": "$35.000",
+    "detalle": "Rosas decorativas | Caja temática",
+    "categoria": "Arreglos",
+    "accion": "Compra online disponible",
+    "imagen": "producto5.jpg"
+  },
+  {
+    "id": 6,
+    "titulo": "Arreglo con peluche",
+    "precio": "$19.990",
+    "detalle": "Detalle con peluche | Personalizado",
+    "categoria": "Arreglos",
+    "accion": "Compra online disponible",
+    "imagen": "producto6.jpg"
+  },
+  {
+    "id": 7,
+    "titulo": "PEluche Angela",
+    "precio": "$14.990",
+    "detalle": "Regalo especial | Hecho con amor",
+    "categoria": "Peluche",
+    "accion": "Compra online disponible",
+    "imagen": "producto7.jpg"
+  },
+  {
+    "id": 8,
+    "titulo": "Box personalizado",
+    "precio": "$21.990",
+    "detalle": "Caja de regalo | Producto personalizado",
+    "categoria": "Box personalizados",
+    "accion": "Compra online disponible",
+    "imagen": "producto8.jpg"
+  },
+  {
+    "id": 9,
+    "titulo": "Arreglo Oso",
+    "precio": "$17.990",
+    "detalle": "Detalle personalizado | Envío disponible",
+    "categoria": "Arreglos",
+    "accion": "Compra online disponible",
+    "imagen": "producto9.jpg"
+  }
+]
