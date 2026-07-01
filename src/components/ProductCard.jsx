@@ -1,6 +1,6 @@
 import Boton from "./Boton.jsx";
 
-function Tarjeta({ imagen, titulo, precio, detalle, categoria, accion }) {
+function ProductCard({ imagen, titulo, precio, detalle, categoria, accion }) {
   return (
     <article className="tarjeta-producto">
       {imagen ? (
@@ -32,4 +32,4 @@ function Tarjeta({ imagen, titulo, precio, detalle, categoria, accion }) {
   );
 }
 
-export default Tarjeta;
+export default ProductCard;

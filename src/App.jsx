@@ -1,44 +1,55 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import HeaderTienda from "./components/HeaderTienda.jsx";
-import Tarjeta from "./components/Tarjeta.jsx";
 import SearchBar from "./components/SearchBar.jsx";
 import Footer from "./components/Footer.jsx";
+import ProductList from "./components/ProductList.jsx";
 import logo from "./assets/logo.png";
-import productos from "./data/productos.json";
-
-const imagenes = import.meta.glob(
-  "./assets/img/*.{png,jpg,jpeg,gif,webp,svg,JPG,JPEG,PNG,WEBP}",
-  {
-    eager: true,
-    import: "default",
-  }
-);
-
-function obtenerImagen(nombreImagen) {
-  return imagenes[`./assets/img/${nombreImagen}`];
-}
+import Loader from "./components/Loader.jsx";
+import ErrorMessage from "./components/ErrorMessage.jsx";
 
 function App() {
+  const [productos, setProductos] = useState([]);
   const [categoriaSeleccionada, setCategoriaSeleccionada] = useState("Todos");
   const [busqueda, setBusqueda] = useState("");
+  const [cargando, setCargando] = useState(true);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    fetch("https://dummyjson.com/products")
+      .then((respuesta) => {
+        if (!respuesta.ok) {
+          throw new Error("No se pudieron cargar los productos");
+        }
+        return respuesta.json();
+      })
+      .then((data) => {
+        setProductos(data.products);
+      })
+      .catch((err) => {
+        setError(err.message);
+      })
+      .finally(() => {
+        setCargando(false);
+      });
+  }, []);
 
   const categorias = [
     "Todos",
-    ...new Set(productos.map((producto) => producto.categoria)),
+    ...new Set(productos.map((producto) => producto.category)),
   ];
 
   const productosFiltrados = productos.filter((producto) => {
     const coincideCategoria =
       categoriaSeleccionada === "Todos" ||
-      producto.categoria === categoriaSeleccionada;
+      producto.category === categoriaSeleccionada;
 
     const textoBusqueda = busqueda.toLowerCase();
 
     const coincideBusqueda =
-      producto.titulo.toLowerCase().includes(textoBusqueda) ||
-      producto.detalle.toLowerCase().includes(textoBusqueda) ||
-      producto.categoria.toLowerCase().includes(textoBusqueda);
+      producto.title.toLowerCase().includes(textoBusqueda) ||
+      producto.description.toLowerCase().includes(textoBusqueda) ||
+      producto.category.toLowerCase().includes(textoBusqueda);
 
     return coincideCategoria && coincideBusqueda;
   });
@@ -49,6 +60,7 @@ function App() {
 
       <main className="pagina">
         <h1 className="titulo-principal">Productos</h1>
+        <p className="subtitulo-principal">Explora nuestra colección y encuentra lo que buscas</p>
 
         <section className="barra-filtros">
           <div className="filtro-categoria">
@@ -70,19 +82,13 @@ function App() {
           <SearchBar busqueda={busqueda} setBusqueda={setBusqueda} />
         </section>
 
-        <div className="contenedor-tarjetas">
-          {productosFiltrados.map((producto) => (
-            <Tarjeta
-              key={producto.id}
-              imagen={obtenerImagen(producto.imagen)}
-              titulo={producto.titulo}
-              precio={producto.precio}
-              detalle={producto.detalle}
-              categoria={producto.categoria}
-              accion={producto.accion}
-            />
-          ))}
-        </div>
+        {cargando && <Loader />}
+
+        {error && <ErrorMessage mensaje={error} />}
+
+        {!cargando && !error && (
+          <ProductList productos={productosFiltrados} />
+        )}
       </main>
 
       <Footer />
